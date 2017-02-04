@@ -126,14 +126,14 @@
             <div class="form__element">
               <label for="type">Тип жилья</label>
               <select id="type">
-                <option value="type__flat" selected>Квартира</option>
-                <option value="type__hovel">Лачуга</option>
-                <option value="type__palace">Дворец</option>
+                <option value="flat" selected>Квартира</option>
+                <option value="hovel">Лачуга</option>
+                <option value="palace">Дворец</option>
               </select>
             </div>
             <div class="form__element">
               <label for="price">Цена за ночь, руб.</label>
-              <input id="price" type="number" placeholder="5000" minlength="1000" maxlength="1000000" required>
+              <input id="price" type="number" placeholder="1000" minlength="1000" min="1000" maxlength="1000000" required>
             </div>
           </div>
           <div class="form__row">
@@ -148,8 +148,8 @@
             <div class="form__element">
               <label for="capacity">Количество мест</label>
               <select id="capacity">
-                <option value="3" selected>для 3 гостей</option>
-                <option value="не для гостей">не для гостей</option>
+                <option value="3">для 3 гостей</option>
+                <option value="0" selected>не для гостей</option>
               </select>
             </div>
           </div>

@@ -1,7 +1,9 @@
 'use strict';
 /* задание 1 */
+
 var pin = document.querySelectorAll('.pin');
 var i;
+
 
 for (i = 0; i < pin.length; i++) {
   pin[i].addEventListener('click', function () {
@@ -38,45 +40,55 @@ timeOut.addEventListener('change', function () {
 
 var housingType = document.querySelector('#type');
 var housingPrice = document.querySelector('#price');
+var obj = {
+  flat: 1000,
+  hovel: 0,
+  palace: 10000
+};
 
 housingType.addEventListener('change', function () {
-  if (housingType.value === 'type__flat') {
-    housingPrice.setAttribute('minlength', '1000');
+  if (housingType.value === 'flat') {
+    housingPrice.setAttribute('min', '1000');
     housingPrice.setAttribute('placeholder', '1000');
-  } else if (housingType.value === 'type__hovel') {
-    housingPrice.setAttribute('minlength', '0');
+  } else if (housingType.value === 'hovel') {
+    housingPrice.setAttribute('min', '0');
     housingPrice.setAttribute('placeholder', '0');
   } else {
-    housingPrice.setAttribute('minlength', '10000');
+    housingPrice.setAttribute('min', '10000');
     housingPrice.setAttribute('placeholder', '10000');
   }
 });
 
 housingPrice.addEventListener('change', function () {
-  if (housingPrice.minlength >= 1000) {
-    housingType.value = 'type__flat';
-  } else if (housingPrice.minlength >= 0) {
-    housingType.value = 'type__hovel';
-  } else {
-    housingType.value = 'type__palace';
+  var currentPrice = +housingPrice.value;
+  if (currentPrice === '') {
+    return false;
   }
-});/* здесь не решил задачу */
+  var type = housingType.value;
+  var minPrice = obj[type];
+  if (currentPrice < minPrice) {
+    housingPrice.value = minPrice;
+  } else if
+});
+
+/* здесь не решил задачу */
 
 var roomNumber = document.querySelector('#room_number');
 var roomCapacity = document.querySelector('#capacity');
-
-roomNumber.addEventListener('change', function () {
-  if (roomNumber.value === 2 || 100) {
-    roomCapacity.value = 3;
+var oneRoomOption = roomNumber.querySelector('[value = "1"]');
+roomCapacity.addEventListener('change', function () {
+  if (roomCapacity.value === "3") {
+    oneRoomOption.setAttribute('disabled', true);
+    oneRoomOption.removeAttribute('selected');
   } else {
-    roomCapacity.value = 'не для гостей';
+    oneRoomOption.removeAttribute('disabled');
   }
 });
 
-roomCapacity.addEventListener('change', function () {
-  if (roomCapacity.value === 3) {
-    roomNumber.value = 2 || 100;
-  } else {
-    roomCapacity.value = 1;
-  }
-});/* здесь не решил задачу */
+// roomCapacity.addEventListener('change', function () {
+//   if (roomCapacity.value === 3) {
+//     roomNumber.value = 2 || 100;
+//   } else {
+//     roomCapacity.value = 1;
+//   }
+// });/* здесь не решил задачу */

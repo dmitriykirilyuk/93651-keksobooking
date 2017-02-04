@@ -68,10 +68,18 @@ housingPrice.addEventListener('change', function () {
   var minPrice = obj[type];
   if (currentPrice < minPrice) {
     housingPrice.value = minPrice;
-  } else if
+  }
 });
 
-/* здесь не решил задачу */
+housingType.addEventListener('change', function () {
+  if (housingType.value === 'flat') {
+    housingPrice.value = 1000;
+  } else if (housingType.value === 'hovel') {
+    housingPrice.value = 0;
+  } else {
+    housingPrice.value = 10000;
+  }
+});
 
 var roomNumber = document.querySelector('#room_number');
 var roomCapacity = document.querySelector('#capacity');
@@ -84,11 +92,3 @@ roomCapacity.addEventListener('change', function () {
     oneRoomOption.removeAttribute('disabled');
   }
 });
-
-// roomCapacity.addEventListener('change', function () {
-//   if (roomCapacity.value === 3) {
-//     roomNumber.value = 2 || 100;
-//   } else {
-//     roomCapacity.value = 1;
-//   }
-// });/* здесь не решил задачу */

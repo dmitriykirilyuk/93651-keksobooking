@@ -4,7 +4,6 @@
 var pin = document.querySelectorAll('.pin');
 var i;
 
-
 for (i = 0; i < pin.length; i++) {
   pin[i].addEventListener('click', function () {
     if (this.classList.contains('pin--active')) {
@@ -17,12 +16,12 @@ for (i = 0; i < pin.length; i++) {
 /* задание 2 */
 var dialogClose = document.querySelector('.dialog__close');
 var dialogPanel = document.querySelector('.dialog');
-var pin = document.querySelectorAll('.pin');/*почему если не обьявить переменную во второй раз, то ее не видит if ?*/
+var pin = document.querySelectorAll('.pin');
 dialogClose.addEventListener('click', function () {
   dialogPanel.style.display = 'none';
 
   if (pin.classList.contains('pin--active')) {
-    this.classList.remove('pin--active');
+    pin.classList.remove('pin--active');
   }
 });
 
@@ -62,7 +61,7 @@ housingType.addEventListener('change', function () {
 housingPrice.addEventListener('change', function () {
   var currentPrice = +housingPrice.value;
   if (currentPrice === '') {
-    return false;
+    return;
   }
   var type = housingType.value;
   var minPrice = obj[type];
@@ -85,7 +84,7 @@ var roomNumber = document.querySelector('#room_number');
 var roomCapacity = document.querySelector('#capacity');
 var oneRoomOption = roomNumber.querySelector('[value = "1"]');
 roomCapacity.addEventListener('change', function () {
-  if (roomCapacity.value === "3") {
+  if (roomCapacity.value === '3') {
     oneRoomOption.setAttribute('disabled', true);
     oneRoomOption.removeAttribute('selected');
   } else {

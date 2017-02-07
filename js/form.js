@@ -2,21 +2,26 @@
 /* задание 1 */
 
 var pin = document.querySelectorAll('.pin');
-var i;
 
-for (i = 0; i < pin.length; i++) {
-  pin[i].addEventListener('click', function () {
-    if (this.classList.contains('pin--active')) {
-      this.classList.remove('pin--active');
+var addHandlers = function (i) {
+  var markMapIndex = pin[i];
+  markMapIndex.addEventListener('click', function () {
+
+    if (markMapIndex.classList.contains('pin--active')) {
+      markMapIndex.classList.remove('pin--active');
     } else {
-      this.classList.add('pin--active');
+      markMapIndex.classList.add('pin--active');
     }
   });
+};
+
+for (var i = 0; i < pin.length; i++) {
+  addHandlers(i);
 }
 /* задание 2 */
 var dialogClose = document.querySelector('.dialog__close');
 var dialogPanel = document.querySelector('.dialog');
-var pin = document.querySelectorAll('.pin');
+pin = document.querySelectorAll('.pin');
 dialogClose.addEventListener('click', function () {
   dialogPanel.style.display = 'none';
 

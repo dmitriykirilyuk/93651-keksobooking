@@ -44,23 +44,17 @@ timeOut.addEventListener('change', function () {
 
 var housingType = document.querySelector('#type');
 var housingPrice = document.querySelector('#price');
-var obj = {
+var HOUSINGS = {
   flat: 1000,
   hovel: 0,
   palace: 10000
 };
 
 housingType.addEventListener('change', function () {
-  if (housingType.value === 'flat') {
-    housingPrice.setAttribute('min', '1000');
-    housingPrice.setAttribute('placeholder', '1000');
-  } else if (housingType.value === 'hovel') {
-    housingPrice.setAttribute('min', '0');
-    housingPrice.setAttribute('placeholder', '0');
-  } else {
-    housingPrice.setAttribute('min', '10000');
-    housingPrice.setAttribute('placeholder', '10000');
-  }
+  var type = housingType.value;
+  var price = HOUSINGS[type];
+  housingPrice.min = price;
+  housingPrice.placeholder = price;
 });
 
 housingPrice.addEventListener('change', function () {
@@ -69,20 +63,16 @@ housingPrice.addEventListener('change', function () {
     return;
   }
   var type = housingType.value;
-  var minPrice = obj[type];
+  var minPrice = HOUSINGS[type];
   if (currentPrice < minPrice) {
     housingPrice.value = minPrice;
   }
 });
 
 housingType.addEventListener('change', function () {
-  if (housingType.value === 'flat') {
-    housingPrice.value = 1000;
-  } else if (housingType.value === 'hovel') {
-    housingPrice.value = 0;
-  } else {
-    housingPrice.value = 10000;
-  }
+  var type = housingType.value;
+  var price = HOUSINGS[type];
+  housingPrice.value = price;
 });
 
 var roomNumber = document.querySelector('#room_number');

@@ -1,16 +1,27 @@
 'use strict';
 /* задание 1 */
-
+var HOUSINGS = {
+  flat: 1000,
+  hovel: 0,
+  palace: 10000
+};
+var ENTER_CODE = 13;
 var pin = document.querySelectorAll('.pin');
 
 var addHandlers = function (i) {
   var markMapIndex = pin[i];
-  markMapIndex.addEventListener('click', function () {
+  // markMapIndex.addEventListener('click', function () {
+  //   dialogPanel.style.display = 'block';
+  //   if (markMapIndex.classList.contains('pin--active')) {
+  //     markMapIndex.classList.remove('pin--active');
+  //   } else {
+  //     markMapIndex.classList.add('pin--active');
+  //   }
+  // });
 
-    if (markMapIndex.classList.contains('pin--active')) {
-      markMapIndex.classList.remove('pin--active');
-    } else {
-      markMapIndex.classList.add('pin--active');
+  markMapIndex.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === ENTER_CODE) {
+      dialogPanel.style.display = 'block';
     }
   });
 };
@@ -18,18 +29,25 @@ var addHandlers = function (i) {
 for (var i = 0; i < pin.length; i++) {
   addHandlers(i);
 }
+
 /* задание 2 */
 var dialogClose = document.querySelector('.dialog__close');
 var dialogPanel = document.querySelector('.dialog');
-pin = document.querySelectorAll('.pin');
+
 dialogClose.addEventListener('click', function () {
   dialogPanel.style.display = 'none';
-
+  pin = document.querySelectorAll('.pin');
   if (pin.classList.contains('pin--active')) {
     pin.classList.remove('pin--active');
   }
 });
 
+dialogClose.addEventListener('keydown', function (evt) {
+  evt.preventDefault();
+  if (evt.keyCode === ENTER_CODE) {
+    dialogPanel.style.display = 'none';
+  }
+});
 /* задание 4 */
 var time = document.querySelector('#time');
 var timeOut = document.querySelector('#timeout');
@@ -44,11 +62,7 @@ timeOut.addEventListener('change', function () {
 
 var housingType = document.querySelector('#type');
 var housingPrice = document.querySelector('#price');
-var HOUSINGS = {
-  flat: 1000,
-  hovel: 0,
-  palace: 10000
-};
+
 
 housingType.addEventListener('change', function () {
   var type = housingType.value;
@@ -84,5 +98,18 @@ roomCapacity.addEventListener('change', function () {
     oneRoomOption.removeAttribute('selected');
   } else {
     oneRoomOption.removeAttribute('disabled');
+  }
+});
+
+/* задание по делегированию */
+var pinBlock = document.querySelector('.tokyo__pin-map');
+
+pinBlock.addEventListener('click', function (evt) {
+  if (evt.target.classList.contains('pin--active')) {
+    evt.target.classList.remove('pin--active');
+    dialogPanel.style.display = 'none';
+  } else {
+    evt.target.classList.add('pin--active');
+    dialogPanel.style.display = 'block';
   }
 });

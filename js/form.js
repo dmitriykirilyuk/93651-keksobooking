@@ -36,6 +36,7 @@ var dialogPanel = document.querySelector('.dialog');
 
 dialogClose.addEventListener('click', function () {
   dialogPanel.style.display = 'none';
+  dialogClose.setAttribute('aria-pressed', true);
   pin = document.querySelectorAll('.pin');
   if (pin.classList.contains('pin--active')) {
     pin.classList.remove('pin--active');
@@ -46,6 +47,7 @@ dialogClose.addEventListener('keydown', function (evt) {
   evt.preventDefault();
   if (evt.keyCode === ENTER_CODE) {
     dialogPanel.style.display = 'none';
+    dialogClose.setAttribute('aria-pressed', true);
   }
 });
 /* задание 4 */

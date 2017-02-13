@@ -1,5 +1,4 @@
 'use strict';
-/* задание 1 */
 var HOUSINGS = {
   flat: 1000,
   hovel: 0,
@@ -10,15 +9,6 @@ var pin = document.querySelectorAll('.pin');
 
 var addHandlers = function (i) {
   var markMapIndex = pin[i];
-  // markMapIndex.addEventListener('click', function () {
-  //   dialogPanel.style.display = 'block';
-  //   if (markMapIndex.classList.contains('pin--active')) {
-  //     markMapIndex.classList.remove('pin--active');
-  //   } else {
-  //     markMapIndex.classList.add('pin--active');
-  //   }
-  // });
-
   markMapIndex.addEventListener('keydown', function (evt) {
     if (evt.keyCode === ENTER_CODE) {
       dialogPanel.style.display = 'block';
@@ -50,7 +40,7 @@ dialogClose.addEventListener('keydown', function (evt) {
     dialogClose.setAttribute('aria-pressed', true);
   }
 });
-/* задание 4 */
+
 var time = document.querySelector('#time');
 var timeOut = document.querySelector('#timeout');
 
@@ -103,7 +93,7 @@ roomCapacity.addEventListener('change', function () {
   }
 });
 
-/* задание по делегированию */
+
 var pinBlock = document.querySelector('.tokyo__pin-map');
 
 pinBlock.addEventListener('click', function (evt) {

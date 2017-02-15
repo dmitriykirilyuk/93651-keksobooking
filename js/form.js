@@ -4,42 +4,12 @@ var HOUSINGS = {
   hovel: 0,
   palace: 10000
 };
-var ENTER_CODE = 13;
+
 var pin = document.querySelectorAll('.pin');
-
-var addHandlers = function (i) {
-  var markMapIndex = pin[i];
-  markMapIndex.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_CODE) {
-      dialogPanel.style.display = 'block';
-    }
-  });
-};
-
-for (var i = 0; i < pin.length; i++) {
-  addHandlers(i);
-}
-
-/* задание 2 */
+var pinBlock = document.querySelector('.tokyo__pin-map');
 var dialogClose = document.querySelector('.dialog__close');
 var dialogPanel = document.querySelector('.dialog');
-
-dialogClose.addEventListener('click', function () {
-  dialogPanel.style.display = 'none';
-  dialogClose.setAttribute('aria-pressed', true);
-  pin = document.querySelectorAll('.pin');
-  if (pin.classList.contains('pin--active')) {
-    pin.classList.remove('pin--active');
-  }
-});
-
-dialogClose.addEventListener('keydown', function (evt) {
-  evt.preventDefault();
-  if (evt.keyCode === ENTER_CODE) {
-    dialogPanel.style.display = 'none';
-    dialogClose.setAttribute('aria-pressed', true);
-  }
-});
+window.initializePins(pinBlock, pin, dialogPanel, dialogClose);
 
 var time = document.querySelector('#time');
 var timeOut = document.querySelector('#timeout');
@@ -90,18 +60,5 @@ roomCapacity.addEventListener('change', function () {
     oneRoomOption.removeAttribute('selected');
   } else {
     oneRoomOption.removeAttribute('disabled');
-  }
-});
-
-
-var pinBlock = document.querySelector('.tokyo__pin-map');
-
-pinBlock.addEventListener('click', function (evt) {
-  if (evt.target.classList.contains('pin--active')) {
-    evt.target.classList.remove('pin--active');
-    dialogPanel.style.display = 'none';
-  } else {
-    evt.target.classList.add('pin--active');
-    dialogPanel.style.display = 'block';
   }
 });

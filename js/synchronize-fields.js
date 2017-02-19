@@ -1,9 +1,21 @@
 'use strict';
-var synchronizeFields = function (inputFirst, inputSecond, arrayFirst, arraySecond, prop) {
-  var val = inputFirst.value;
-  var index = arrayFirst.findIndex(function (elem) {
-    return elem === val;
+var synchronizeFields = function (inputFirst, inputSecond, arrayFirst, arraySecond, strName) {
+  inputFirst.addEventListener('change', function () {
+    var selectValue = arrayFirst.indexOf(inputFirst.value);
+    inputSecond[strName] = arraySecond[selectValue];
   });
-  var val2 = arraySecond[index];
-  inputSecond[prop] = val2;
+  inputSecond.addEventListener('change', function () {
+    var selectSecondValue = arraySecond.indexOf(inputSecond.value);
+    inputFirst[strName] = arrayFirst[selectSecondValue];
+
+    var currentPrice = +inputSecond.value;
+    if (currentPrice === '') {
+      return;
+    }
+    var type = arrayFirst.indexOf(inputFirst.value);
+    var minPrice = arraySecond[type];
+    if (currentPrice < minPrice) {
+      inputSecond.value = minPrice;
+    }
+  });
 };

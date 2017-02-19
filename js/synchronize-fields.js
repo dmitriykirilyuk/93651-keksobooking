@@ -1,5 +1,5 @@
 'use strict';
-var synchronizeFields = function (inputFirst, inputSecond, arrayFirst, arraySecond, strName) {
+window.synchronizeFields = function (inputFirst, inputSecond, arrayFirst, arraySecond, strName) {
   inputFirst.addEventListener('change', function () {
     var selectValue = arrayFirst.indexOf(inputFirst.value);
     inputSecond[strName] = arraySecond[selectValue];

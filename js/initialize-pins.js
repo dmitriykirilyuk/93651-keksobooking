@@ -1,6 +1,6 @@
 'use strict';
-window.initializePins = (function () {
-  return function (elementParent, element, dialogElement, dialogElementClose) {
+(function () {
+  window.initializePins = function (elementParent, element, dialogElement, dialogElementClose) {
     var ENTER_CODE = 13;
     elementParent.addEventListener('click', function (evt) {
       if (evt.target.classList.contains('pin--active')) {

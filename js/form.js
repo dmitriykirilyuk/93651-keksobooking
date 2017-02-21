@@ -1,5 +1,5 @@
 'use strict';
-window.form = (function () {
+(function () {
   var pin = document.querySelectorAll('.pin');
   var pinBlock = document.querySelector('.tokyo__pin-map');
   var dialogClose = document.querySelector('.dialog__close');

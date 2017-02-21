@@ -1,6 +1,6 @@
 'use strict';
-window.synchronizeFields = (function () {
-  return function (inputFirst, inputSecond, arrayFirst, arraySecond, strName) {
+(function () {
+  window.synchronizeFields = function (inputFirst, inputSecond, arrayFirst, arraySecond, strName) {
     inputFirst.addEventListener('change', function () {
       var selectValue = arrayFirst.indexOf(inputFirst.value);
       inputSecond[strName] = arraySecond[selectValue];
@@ -8,7 +8,6 @@ window.synchronizeFields = (function () {
     inputSecond.addEventListener('change', function () {
       var selectSecondValue = arraySecond.indexOf(inputSecond.value);
       inputFirst[strName] = arrayFirst[selectSecondValue];
-
       var currentPrice = +inputSecond.value;
       if (currentPrice === '') {
         return;

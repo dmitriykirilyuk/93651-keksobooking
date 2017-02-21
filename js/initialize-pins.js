@@ -1,7 +1,7 @@
 'use strict';
 (function () {
+  var ENTER_CODE = 13;
   window.initializePins = function (elementParent, element, dialogElement, dialogElementClose) {
-    var ENTER_CODE = 13;
     elementParent.addEventListener('click', function (evt) {
       if (evt.target.classList.contains('pin--active')) {
         evt.target.classList.remove('pin--active');

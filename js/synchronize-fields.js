@@ -1,13 +1,17 @@
 'use strict';
 (function () {
-  window.synchronizeFields = function (inputFirst, inputSecond, arrayFirst, arraySecond, strName) {
+  window.synchronizeFields = function (inputFirst, inputSecond, arrayFirst, arraySecond, cb) {
     inputFirst.addEventListener('change', function () {
-      var selectValue = arrayFirst.indexOf(inputFirst.value);
-      inputSecond[strName] = arraySecond[selectValue];
+      if (typeof cb === 'function') {
+        var selectValue = arrayFirst.indexOf(inputFirst.value);
+        inputSecond.value = arraySecond[selectValue];
+      }
     });
     inputSecond.addEventListener('change', function () {
-      var selectSecondValue = arraySecond.indexOf(inputSecond.value);
-      inputFirst[strName] = arrayFirst[selectSecondValue];
+      if (typeof cb === 'function') {
+        var selectSecondValue = arraySecond.indexOf(inputSecond.value);
+        inputFirst.value = arrayFirst[selectSecondValue];
+      }
       var currentPrice = +inputSecond.value;
       if (currentPrice === '') {
         return;

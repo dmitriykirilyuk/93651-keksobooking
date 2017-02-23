@@ -21,7 +21,6 @@
   window.initializePins(pin, dialogPanel, dialogClose);
   window.synchronizeFields(time, timeOut, ['12', '13', '14'], ['12', '13', '14'], syncValues);
   window.synchronizeFields(timeOut, time, ['12', '13', '14'], ['12', '13', '14'], syncValues);
-  window.synchronizeFields(housingType, housingPrice, ['flat', 'hovel', 'palace'], ['1000', '0', '10000'], syncValues);
   window.synchronizeFields(housingType, housingPrice, ['flat', 'hovel', 'palace'], ['1000', '0', '10000'], syncValueWithMin);
   window.synchronizeFields(roomNumber, roomCapacity, ['1', '2', '100'], ['0', '3', '3'], syncValues);
 })();

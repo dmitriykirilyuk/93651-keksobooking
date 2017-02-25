@@ -28,21 +28,20 @@
       }
     });
 
-    var addHandlers = function (i) {
-      var markMapIndex = pin[i];
-      markMapIndex.addEventListener('keydown', function (evt) {
-        if (evt.keyCode === ENTER_CODE) {
-          window.showCard(dialogPanel);
-        }
-        if (evt.keyCode === 9) {
-          markMapIndex.classList.add('pin--active');
-        }
-      });
-    };
+    pinBlock.addEventListener('keydown', function (evt) {
+      if (evt.keyCode === ENTER_CODE) {
+        window.showCard(dialogPanel);
+        dialogPanel.focus();
+      }
+    });
 
-    for (var i = 0; i < pin.length; i++) {
-      addHandlers(i);
-    }
+    pinBlock.addEventListener('focusin', function (evt) {
+      evt.target.classList.add('pin--active');
+    });
+
+    pinBlock.addEventListener('focusout', function (evt) {
+      evt.target.classList.remove('pin--active');
+    });
 
     dialogElementClose.addEventListener('keydown', function (evt) {
       evt.preventDefault();

@@ -3,7 +3,6 @@
   var ENTER_CODE = 13;
   var dialogPanel = document.querySelector('.dialog');
   var pinBlock = document.querySelector('.tokyo__pin-map');
-  var pin = document.querySelectorAll('.pin');
   var pinActive = document.querySelector('.pin--active');
   window.initializePins = function (element, dialogElement, dialogElementClose) {
     dialogElementClose.addEventListener('click', function () {
@@ -55,6 +54,5 @@
 
   var getBackFocus = function () {
     pinActive.focus();
-    pinActive.style.border = '3px solid red';
   };
 })();

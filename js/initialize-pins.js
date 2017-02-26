@@ -1,11 +1,13 @@
 'use strict';
 (function () {
   var ENTER_CODE = 13;
+  var DATA = 'https://intensive-javascript-server-pedmyactpq.now.sh/keksobooking/data';
   var dialogPanel = document.querySelector('.dialog');
   var pinBlock = document.querySelector('.tokyo__pin-map');
   var pinActive = document.querySelector('.pin--active');
-  var pin = document.querySelector('.pin');
-
+  var similarApartments = [];
+  var templateElement = document.querySelector('#pin-template');
+  var elementToClone = templateElement.content.querySelector('.pin');
   window.initializePins = function (element, dialogElement, dialogElementClose) {
     dialogElementClose.addEventListener('click', function () {
       dialogElement.style.display = 'none';
@@ -57,23 +59,21 @@
   var getBackFocus = function () {
     pinActive.focus();
   };
-
-  var similarApartments = [];
-  var templateElement = document.querySelector('#pin-template');
-  var elementToClone = templateElement.content.querySelector('.pin');
   var onLoad = function (data) {
     similarApartments = data;
     similarApartments.forEach(function (item, index, array) {
-      var newPin = elementToClone.cloneNode(true);
+
       if (index < 3) {
+        var newPin = elementToClone.cloneNode(true);
+        newPin.setAttribute('tabindex', 0);
+        var pinChild = newPin.children[0];
+        pinChild.alt = item.offer.address;
+        pinChild.src = item.author.avatar;
+        newPin.style.top = item.location.y + 'px';
+        newPin.style.left = item.location.x + 'px';
         pinBlock.appendChild(newPin);
       }
-      newPin.setAttribute('tabindex', 0);
-      newPin.children[0].alt = similarApartments[index].offer.address;
-      newPin.children[0].src = similarApartments[index].author.avatar;
-      newPin.style.top = similarApartments[index].location.y + 'px';
-      newPin.style.left = similarApartments[index].location.x + 'px';
     });
   };
-  window.load('https://intensive-javascript-server-pedmyactpq.now.sh/keksobooking/data', onLoad);
+  window.load(DATA, onLoad);
 })();

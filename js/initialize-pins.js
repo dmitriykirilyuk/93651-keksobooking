@@ -28,7 +28,7 @@
       } else {
         pinOnMap.classList.add('pin--active');
         window.showCard(dialogPanel);
-        pinActive = evt.target;
+        pinActive = pinOnMap;
       }
     });
 

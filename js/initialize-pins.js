@@ -1,7 +1,7 @@
 'use strict';
 (function () {
   var ENTER_CODE = 13;
-  var DATA = 'https://intensive-javascript-server-pedmyactpq.now.sh/keksobooking/data';
+  var DATA_URL = 'https://intensive-javascript-server-pedmyactpq.now.sh/keksobooking/data';
   var dialogPanel = document.querySelector('.dialog');
   var pinBlock = document.querySelector('.tokyo__pin-map');
   var pinActive = document.querySelector('.pin--active');
@@ -20,12 +20,13 @@
     });
 
     pinBlock.addEventListener('click', function (evt) {
-      if (evt.target.classList.contains('pin--active')) {
-        evt.target.classList.remove('pin--active');
+      var piOnMap = evt.target;
+      if (piOnMap.classList.contains('pin--active')) {
+        piOnMap.classList.remove('pin--active');
         dialogPanel.style.display = 'none';
         pinActive = null;
       } else {
-        evt.target.classList.add('pin--active');
+        piOnMap.classList.add('pin--active');
         window.showCard(dialogPanel);
         pinActive = evt.target;
       }
@@ -61,7 +62,7 @@
   };
   var onLoad = function (data) {
     similarApartments = data;
-    similarApartments.forEach(function (item, index, array) {
+    similarApartments.forEach(function (item, index) {
 
       if (index < 3) {
         var newPin = elementToClone.cloneNode(true);
@@ -75,5 +76,5 @@
       }
     });
   };
-  window.load(DATA, onLoad);
+  window.load(DATA_URL, onLoad);
 })();

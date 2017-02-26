@@ -1,10 +1,10 @@
 'use strict';
 (function () {
-  var statusCodeOk = 200;
+  var STATUS_CODE_OK = 200;
   window.load = function (url, onLoad) {
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('load', function (evt) {
-      if (evt.target.status === statusCodeOk) {
+      if (evt.target.status === STATUS_CODE_OK) {
         var data = JSON.parse(evt.target.response);
         onLoad(data);
       }

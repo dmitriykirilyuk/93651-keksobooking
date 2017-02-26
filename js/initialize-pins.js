@@ -4,8 +4,8 @@
   var dialogPanel = document.querySelector('.dialog');
   var pinBlock = document.querySelector('.tokyo__pin-map');
   var pinActive = document.querySelector('.pin--active');
-  var pinTemplate = document.querySelector('.pin-template');
-  var similarApartments = [];
+
+
   window.initializePins = function (element, dialogElement, dialogElementClose) {
     dialogElementClose.addEventListener('click', function () {
       dialogElement.style.display = 'none';
@@ -58,11 +58,4 @@
     pinActive.focus();
   };
 
-  window.load('https://intensive-javascript-server-pedmyactpq.now.sh/keksobooking/data', similarApartments);
-
-  similarApartments.forEach(function (item, index, array) {
-    if (index === (array.length < 3)) {
-      pinBlock.appendChild(pinTemplate.cloneNode(true));
-    }
-  });
-})();
+    window.load('https://intensive-javascript-server-pedmyactpq.now.sh/keksobooking/data', onLoad);

@@ -64,16 +64,15 @@
   var onLoad = function (data) {
     similarApartments = data;
     similarApartments.forEach(function (item, index, array) {
-
-      if (index < 3) {
-        pinBlock.appendChild(elementToClone.cloneNode(true));
-      }
       var newPin = elementToClone.cloneNode(true);
+      if (index < 3) {
+        pinBlock.appendChild(newPin);
+      }
       newPin.setAttribute('tabindex', 0);
       newPin.children[0].alt = similarApartments[index].offer.address;
-      newPin.children[0].src = window.similarApartments[index].author.avatar;
-      newPin.style.top = window.similarApartments[index].location.y + 'px';
-      newPin.style.left = window.similarApartments[index].location.x + 'px';
+      newPin.children[0].src = similarApartments[index].author.avatar;
+      newPin.style.top = similarApartments[index].location.y + 'px';
+      newPin.style.left = similarApartments[index].location.x + 'px';
     });
   };
   window.load('https://intensive-javascript-server-pedmyactpq.now.sh/keksobooking/data', onLoad);
